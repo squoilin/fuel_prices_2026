@@ -398,7 +398,7 @@ x_apr8_eod = days_before("2026-04-08 12:00")
 
 first = True
 for col, c, lbl in [
-    ("gas_pred", C_GAS,  "Predicted fuel prices (Brent regression)"),
+    ("gas_pred", C_GAS,  "Predicted fuel prices (Regression)"),
     ("die_pred", C_DIE,  None),
     ("heat_pred", C_HEAT, None),
 ]:
@@ -510,6 +510,24 @@ ax.set_title(
 # SAVE
 # ────────────────────────────────────────────────────────────────
 fig.tight_layout()
+
+# Overlay CC-BY logo from clipboard (cached as cc_by_logo.png)
+logo_path = os.path.join(IMG_DIR, "cc_by_logo.png")
+if os.path.exists(logo_path):
+    try:
+        from matplotlib.offsetbox import OffsetImage, AnnotationBbox
+        logo_img = plt.imread(logo_path)
+        # Scale logo height to roughly 4% of axis height
+        logo_height_pct = 0.04
+        logo_aspect = logo_img.shape[1] / logo_img.shape[0]
+        
+        oi = OffsetImage(logo_img, zoom=0.24) # Increased zoom by factor 2 (0.15 -> 0.30)
+        ab = AnnotationBbox(oi, (0.98, 0.02), xycoords='axes fraction',
+                           box_alignment=(1.0, 0.0), frameon=False, pad=0)
+        ax.add_artist(ab)
+    except Exception as e:
+        print(f"Warning: Could not add logo: {e}")
+
 out_png = os.path.join(IMG_DIR, "fig_combined_logtime.png")
 out_pdf = os.path.join(IMG_DIR, "fig_combined_logtime.pdf")
 fig.savefig(out_png, dpi=200, bbox_inches="tight", facecolor="white")
