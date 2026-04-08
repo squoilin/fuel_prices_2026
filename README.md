@@ -54,7 +54,7 @@ On first run, the script automatically downloads and caches several FRED macroec
 | `BRENTCRUDEOIL_2026-04-08.txt` | 5-minute tick data for Brent crude, Mar 31 – Apr 8, 2026 | ICE / broker platform |
 | `regression_coefficients.csv` | Linear regression coefficients (Brent → retail fuel price) | Derived from beSTAT vs. FRED Brent |
 
-### Auto-downloaded from FRED (cached in `data/`)
+### Downloaded from FRED (cached in `data/`)
 
 | Series | Description | URL |
 |--------|-------------|-----|
@@ -68,4 +68,3 @@ On first run, the script automatically downloads and caches several FRED macroec
 
 - Python 3.8+
 - `numpy`, `pandas`, `matplotlib`
-- Internet connection on first run (to download FRED data)
