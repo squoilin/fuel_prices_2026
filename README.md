@@ -2,6 +2,8 @@
 
 A single high-resolution chart showing 65 years of crude oil and Belgian retail fuel prices, all expressed in **constant 2026 euros per litre**, with a logarithmic time axis that naturally zooms into the 2026 Strait of Hormuz crisis.
 
+![Combined Figure](images/fig_combined_logtime.png)
+
 ## Output
 
 The script generates `images/fig_combined_logtime.png` (and `.pdf`):
